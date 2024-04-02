@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "GTwt1Hw0izBNqzQkh1qI33acXEdhCzIVXsPufAEdTxg=",
+  "Source": "VM.Marketplace.API",
+  "BasePath": "_content/VM.Marketplace.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
