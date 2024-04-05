@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "HcNtjXDutN67P8CFf8GHEslCO/L6/om8cN+WDq4ZIihQ0r2WKvseXRyTb6IE7Imgsn4+O/pQUkoYANW3PGjo0w==",
+  "dgSpecHash": "7foCbqgLCpiTrB044UV99wTcdEtrw+/WizfpVCr/pmqGYzNsZH4dWy6jEE4tIXo+e7sF5tJ/5zllUf+wKWfFPA==",
   "success": true,
-  "projectFilePath": "C:\\Baptista Neves\\files\\vm.marketplace\\VM.Marketplace\\src\\VM.Marketplace.Application\\VM.Marketplace.Application.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Application\\VM.Marketplace.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

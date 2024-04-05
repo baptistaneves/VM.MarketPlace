@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "42l1ra3LKFWtBwNb5840DLMxeP7cpJtAQb5wMDH4eg6EpP+9XJdoWtFXLU1u9yjlg2ke6+vAOYuCpx+YBnQl1w==",
+  "dgSpecHash": "08+0sXyQ4WmDXUVMhA1XlL/aDxvxATSQzZU+AhsAn28BQIcQ6vpZmuDv5Spk8yztxdwj7HuIgJPxgaQzFWKXsQ==",
   "success": true,
-  "projectFilePath": "C:\\Baptista Neves\\files\\vm.marketplace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj",
+  "projectFilePath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
