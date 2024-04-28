@@ -23,7 +23,9 @@ public class GroupAppService : BaseAppService, IGroupAppService
 
     public async Task UpdateGroupAsync(UpdateGroupRequest groupRequest)
     {
-        if(!_groupRepository.FilterAsync(x => x.Id == groupRequest.Id).Result.Any())
+        var group = await _groupRepository.GetByIdAsync(groupRequest.Id);
+
+        if(group is null)
         {
             Notify(GroupErrorMessage.GroupNotFound);
             return;
@@ -38,7 +40,9 @@ public class GroupAppService : BaseAppService, IGroupAppService
             return;
         }
 
-        await _groupRepository.ReplaceOnceAsync(new Group(groupRequest.Description, groupRequest.IsActive));
+        group.Update(groupRequest.Description, groupRequest.IsActive);
+
+        await _groupRepository.ReplaceOnceAsync(group);
     }
 
     public async Task RemoveGroupAsync(Guid id)

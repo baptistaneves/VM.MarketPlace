@@ -4,6 +4,16 @@ public class State : Entity
 {
     public string Name { get; private set; }
 
-    //EF Rel.
-    public IEnumerable<City> Cities { get; private set; }
+    public State(string name)
+    {
+        Name = name;
+    }
+
+    //MongoDb Rel.
+    public State(){}
+
+    public void Update(string name)
+    {
+        Name = name;
+    }
 }

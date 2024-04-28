@@ -1,4 +1,5 @@
-﻿using VM.Marketplace.Domain.Entities;
+﻿
+using VM.Marketplace.Domain.Entities;
 
 namespace VM.Marketplace.Domain.Repositories;
 

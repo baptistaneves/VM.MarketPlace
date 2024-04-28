@@ -9,3 +9,4 @@ global using VM.Marketplace.Application.Interfaces;
 global using VM.Marketplace.Domain.Repositories;
 global using VM.Marketplace.Application.Validations;
 global using VM.Marketplace.Application.Services;
+global using VM.Marketplace.Domain.Results;

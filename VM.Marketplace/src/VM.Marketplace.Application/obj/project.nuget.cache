@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7foCbqgLCpiTrB044UV99wTcdEtrw+/WizfpVCr/pmqGYzNsZH4dWy6jEE4tIXo+e7sF5tJ/5zllUf+wKWfFPA==",
+  "dgSpecHash": "zhor8LoQsg6RW210mJV0XSp4/quCPFH3j0RywPFYK9oxH12cFEYDiCjT24d5YUktbA7Cj8vh9FjCHuqnlrvzXA==",
   "success": true,
-  "projectFilePath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Application\\VM.Marketplace.Application.csproj",
+  "projectFilePath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Application\\VM.Marketplace.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",

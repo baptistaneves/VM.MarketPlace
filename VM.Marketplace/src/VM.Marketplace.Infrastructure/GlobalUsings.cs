@@ -1,0 +1,15 @@
+﻿global using MongoDB.Driver;
+global using VM.Marketplace.Domain.Entities;
+global using VM.Marketplace.Domain.Repositories;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using MongoDB.Bson;
+global using VM.Marketplace.Infrastructure.Persistence;
+global using VM.Marketplace.Infrastructure.Persistence.Repositories;
+global using System.Linq.Expressions;
+global using AspNetCore.Identity.MongoDbCore.Models;
+global using MongoDbGenericRepository.Attributes;
+global using Microsoft.AspNetCore.Identity;
+global using VM.Marketplace.Domain.Notifications.Results;
+global using VM.Marketplace.Domain.Results;
+global using VM.Marketplace.Infrastructure.Identity.Models;

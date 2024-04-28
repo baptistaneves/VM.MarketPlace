@@ -2,10 +2,21 @@
 
 public class Subcategory : Entity
 {
+    
     public string Description { get; private set; }
     public Guid CategoryId { get; private set; }
+    public Subcategory(string description, Guid categoryId)
+    {
+        Description = description;
+        CategoryId = categoryId;
+    }
 
-    //EF Rel.
-    public Category Category { get; private set; }
-    public IEnumerable<Product> Products { get; private set; }
+    //MongoDb Rel.
+    public Subcategory() {}
+
+    public void Update(string  description, Guid categoryId)
+    {
+        Description = description;
+        CategoryId = categoryId;
+    }
 }

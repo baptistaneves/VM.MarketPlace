@@ -5,7 +5,18 @@ public class Category : Entity
     public string Description { get; private set; }
     public Guid GroupId { get; private set; }
 
-    //EF Rel.
-    public Group Group { get; private set; }
-    public IEnumerable<Subcategory> Subcategories { get; private set; }
+    public Category(string description, Guid groupId)
+    {
+        Description = description;
+        GroupId = groupId;
+    }
+
+    //For MongoDb Rel.
+    public Category() { }
+
+    public void Update(string description, Guid groupId)
+    {
+        Description = description;
+        GroupId = groupId;  
+    }
 }

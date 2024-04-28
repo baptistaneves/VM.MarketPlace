@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VM.Marketplace.Application\VM.Marketplace.Application.csproj" />
+    <ProjectReference Include="..\VM.Marketplace.Domain\VM.Marketplace.Domain.csproj" />
+    <ProjectReference Include="..\VM.Marketplace.Infrastructure\VM.Marketplace.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

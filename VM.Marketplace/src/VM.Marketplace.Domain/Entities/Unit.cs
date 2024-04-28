@@ -3,7 +3,17 @@
 public class Unit : Entity
 {
     public string Description { get; private set; }
+    public Unit(string description)
+    {
+        Description = description;
+    }
 
-    //EF Rel.
-    public IEnumerable<Product> Products { get; private set; }
+    //MongoDb Rel
+    public Unit() { }
+
+    public void Update(string description)
+    {
+        Description = description;
+    }
+
 }

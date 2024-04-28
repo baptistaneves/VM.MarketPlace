@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj": {}
+    "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj": {
+    "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj",
         "projectName": "VM.Marketplace.Domain",
-        "projectPath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj",
+        "projectPath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj",
         "packagesPath": "C:\\Users\\Baptista Neves\\.nuget\\packages\\",
-        "outputPath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\Baptista Neves\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,21 +65,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj": {
+    "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj",
         "projectName": "VM.Marketplace.Infrastructure",
-        "projectPath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Baptista Neves\\.nuget\\packages\\",
-        "outputPath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\Baptista Neves\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,14 +91,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj": {
-                "projectPath": "D:\\Modern View\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj"
+              "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj": {
+                "projectPath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Domain\\VM.Marketplace.Domain.csproj"
               }
             }
           }
@@ -109,6 +119,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AspNetCore.Identity.MongoDbCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -138,7 +156,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -5,8 +5,18 @@ public class City : Entity
     public string Name { get; private set; }
     public Guid StateId { get; private set; }
 
-    //EF Rel.
-    public State State { get; set; }
+    public City(string name, Guid stateId)
+    {
+        Name = name;
+        StateId = stateId;
+    }
 
-    public IEnumerable<Address> Addresses { get; private set; }
+    //MongoDb Rel.
+    public City() {}
+
+    public void Update(string name, Guid stateId)
+    {
+        Name = name;
+        StateId = stateId;
+    }
 }

@@ -6,6 +6,20 @@ public class DeliveryAddress : Entity
     public string Description { get; private set; }
     public string Street { get; private set; }
 
-    //EF Rel.
-    public City City { get; set; }
+    public DeliveryAddress(Guid cityId, string description, string street)
+    {
+        CityId = cityId;
+        Description = description;
+        Street = street;
+    }
+
+    //MongoDb Rel.
+    public DeliveryAddress() { }
+
+    public void Update(Guid cityId, string description, string street)
+    {
+        CityId = CityId;
+        Description = description;
+        Street = street;
+    }
 }

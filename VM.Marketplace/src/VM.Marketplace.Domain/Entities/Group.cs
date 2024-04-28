@@ -10,4 +10,13 @@ public class Group : Entity
         Description = description;
         IsActive = isActive;
     }
+
+    //MongoDb Rel.
+    public Group() { }
+
+    public void Update(string description, bool isActive)
+    {
+        Description = description;
+        IsActive = isActive;
+    }
 }
