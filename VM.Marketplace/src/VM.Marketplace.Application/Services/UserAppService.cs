@@ -1,21 +1,26 @@
-﻿using VM.Marketplace.Domain.Notifications.Results;
+﻿using VM.Marketplace.Domain.Dtos;
+using VM.Marketplace.Domain.Notifications.Results;
 
 namespace VM.Marketplace.Application.Services;
 
 public class UserAppService : BaseAppService, IUserAppService
 {
     private readonly IUserRepository _userRepository;
-    public UserAppService(INotifier notifier, 
-                          IUserRepository userRepository) : base(notifier)
+    private readonly IJwtService _jwtService;
+    public UserAppService(INotifier notifier,
+                          IUserRepository userRepository,
+                          IJwtService jwtService) : base(notifier)
     {
         _userRepository = userRepository;
+        _jwtService = jwtService;
     }
 
     public async Task<OperationResult<User>> AddAdmin(CreateAdminUserRequest userRequest)
     {
         if (!Validate(new CreateAdminUserValidation(), userRequest)) new OperationResult<User>(); 
 
-        var newUser = User.CreateAdminUser(userRequest.FullName, userRequest.Email, userRequest.PhoneNumber, userRequest.Password);
+        var newUser = User.CreateAdminUser(userRequest.FullName, userRequest.Email, 
+            userRequest.PhoneNumber, userRequest.Password, userRequest.Role);
 
         var result = await _userRepository.InsertAdminUserOnceAsync(newUser);
 
@@ -53,17 +58,17 @@ public class UserAppService : BaseAppService, IUserAppService
         return result;
     }
 
-    public async Task<IEnumerable<User>> GetAllAdminUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllAdminUsersAsync()
     {
         return await _userRepository.GetAllAdminUsersAsync();
     }
 
-    public async Task<IEnumerable<User>> GetAllCustomerUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllCustomerUsersAsync()
     {
         return await _userRepository.GetAllCustomerUsersAsync();
     }
 
-    public async Task<IEnumerable<User>> GetAllSellerUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllSellerUsersAsync()
     {
         return await _userRepository.GetAllSellerUsersAsync();
     }
@@ -73,16 +78,19 @@ public class UserAppService : BaseAppService, IUserAppService
         return await _userRepository.GetByIdAsync(id);
     }
 
-    public async Task<OperationResult<User>> Login(LoginRequest loginRequest)
+    public async Task<AuthenticationResultDto> Login(LoginRequest loginRequest)
     {
         if (!Validate(new LoginValidation(), loginRequest)) new OperationResult<User>();
 
         var result = await _userRepository.Login(loginRequest.Email, loginRequest.Password);
 
         if (result.HasError)
+        {
             result.Errors.ForEach(error => { Notify(error.Message); });
+            return null;
+        }
 
-        return result;
+        return await _jwtService.GenerateToken(result.Payload);
     }
 
     public async Task Remove(Guid id)

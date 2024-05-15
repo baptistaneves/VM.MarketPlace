@@ -4,6 +4,7 @@ public class Category : Entity
 {
     public string Description { get; private set; }
     public Guid GroupId { get; private set; }
+    public Group Group { get; private set; }
 
     public Category(string description, Guid groupId)
     {

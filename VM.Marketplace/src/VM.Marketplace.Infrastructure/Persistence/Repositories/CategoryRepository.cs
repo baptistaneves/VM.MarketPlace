@@ -1,4 +1,5 @@
-﻿using VM.Marketplace.Domain.Dtos;
+﻿using MongoDB.Driver;
+using VM.Marketplace.Domain.Dtos;
 using VM.Marketplace.Domain.Entities;
 
 namespace VM.Marketplace.Infrastructure.Persistence.Repositories;
@@ -12,21 +13,19 @@ public class CategoryRepository : GenericRepository<Category>, ICategoryReposito
 
     public async Task<IEnumerable<CategoryDto>> GetAllCategories()
     {
-        var aggregate = _collection.Aggregate()
-         .Lookup<Category, Group, CategoryDto>(
-             foreignCollectionName: "groups",
-             localField: c => c.GrupoId,
-             foreignField: g => g.Id,
-             @as: c => c.Grupo)
-         .Unwind(c => c.Group)
-         .Project(c => new CategoryDto
-         {
-             Id = c.Id,
-             Description = c.Description,
-             GroupId = c.Grupo.Id,
-             GroupDescription = c.Grupo.Description
-         });
+        var result = (from category in _collection.AsQueryable()
+                      join grupo in _collection.Database.GetCollection<Group>("groups").AsQueryable() on category.GroupId equals grupo.Id into categoryGroupJoin
+                      from grupo in categoryGroupJoin.DefaultIfEmpty()
+                      select new CategoryDto
+                      {
+                          Id = category.Id,
+                          Description = category.Description,
+                          GroupDescription = grupo.Description,
+                          GroupId = grupo.Id
+              }).ToList();
 
-        return await aggregate.ToListAsync();
+        return result;
     }
+
+
 }

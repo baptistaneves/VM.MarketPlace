@@ -1,4 +1,6 @@
-﻿namespace VM.Marketplace.Application.Services;
+﻿using VM.Marketplace.Domain.Dtos;
+
+namespace VM.Marketplace.Application.Services;
 
 public class CategoryAppService : BaseAppService, ICategoryAppService
 {
@@ -42,7 +44,7 @@ public class CategoryAppService : BaseAppService, ICategoryAppService
 
         category.Update(categoryRequest.Description, categoryRequest.GroupId);
 
-        await _categoryRepository.ReplaceOnceAsync(new Category(categoryRequest.Description, categoryRequest.GroupId));
+        await _categoryRepository.ReplaceOnceAsync(category);
     }
 
     public async Task RemoveCategoryAsync(Guid id)
@@ -56,9 +58,9 @@ public class CategoryAppService : BaseAppService, ICategoryAppService
         await _categoryRepository.DeleteOnceAsync(id);
     }
 
-    public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
+    public async Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync()
     {
-        return await _categoryRepository.GetAllAsync();
+        return await _categoryRepository.GetAllCategories();
     }
 
     public async Task<Category> GetCategoryByIdAsync(Guid id)

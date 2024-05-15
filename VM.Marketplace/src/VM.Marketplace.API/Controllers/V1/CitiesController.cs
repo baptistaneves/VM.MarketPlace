@@ -17,6 +17,12 @@ public class CitiesController : BaseController
         return Response(await _cityAppService.GetAllCitiesAsync());
     }
 
+    [HttpGet(ApiRoutes.City.GetCitiesByStateId)]
+    public async Task<ActionResult> GetCitiesByStateId(Guid stateId)
+    {
+        return Response(await _cityAppService.GetCitiesByStateId(stateId));
+    }
+
     [HttpGet(ApiRoutes.City.GetById)]
     [ValidateGuid("id")]
     public async Task<ActionResult> GetById(Guid id)

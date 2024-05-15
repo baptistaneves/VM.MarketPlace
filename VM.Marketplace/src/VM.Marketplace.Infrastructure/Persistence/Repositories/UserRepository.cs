@@ -1,9 +1,12 @@
-﻿namespace VM.Marketplace.Infrastructure.Persistence.Repositories;
+﻿using VM.Marketplace.Domain.Dtos;
+
+namespace VM.Marketplace.Infrastructure.Persistence.Repositories;
 
 public class UserRepository : GenericRepository<User>, IUserRepository
 {
     private const string collectionName = "users";
     private OperationResult<User> _result;
+    private OperationResult<UserDto> _loginResult;
 
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
@@ -14,6 +17,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
         _userManager = userManager;
         _result = new OperationResult<User>();
+        _loginResult = new OperationResult<UserDto>();
         _signInManager = signInManager;
     }
 
@@ -36,7 +40,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
             Iban = user.Iban,
             CreatedAt = user.CreatedAt,
             IsBlocked = user.IsBlocked,
-            IsDeleted = user.IsDeleted
+            IsDeleted = user.IsDeleted,
         };
 
         var identityResult = await _userManager.CreateAsync(newUser, user.Password);
@@ -50,46 +54,141 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         return _result;
     }
 
-    public async Task<OperationResult<User>> Login(string username, string password)
+    public async Task<OperationResult<UserDto>> Login(string username, string password)
     {
         var user = await _userManager.FindByEmailAsync(username);
 
         if(user is null)
         {
-            AddError(UserErrorMessage.IncorretEmailOrPassword);
-            return _result;
+            AddLoginError(UserErrorMessage.IncorretEmailOrPassword);
+            return _loginResult;
         }
 
         var identityResult = await _signInManager.CheckPasswordSignInAsync(user, password, true);
 
         if(identityResult.IsLockedOut)
         {
-            AddError(UserErrorMessage.LockoutFailure);
-            return _result;
+            AddLoginError(UserErrorMessage.LockoutFailure);
+            return _loginResult;
         }
 
         if (!identityResult.Succeeded) 
         {
-            AddError(UserErrorMessage.IncorretEmailOrPassword);
-            return _result;
+            AddLoginError(UserErrorMessage.IncorretEmailOrPassword);
+            return _loginResult;
         }
 
-        return _result;
+        _loginResult.Payload = await GetAdminUserByEmailAsync(user.Email);
+
+        return _loginResult;
     }
 
-    public async Task<IEnumerable<User>> GetAllAdminUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllAdminUsersAsync()
     {
-        return await _collection.Find(x => x.Type == TypeUser.Administrator).ToListAsync();
+        var result = (from user in _collection.AsQueryable()
+                      select new UserDto
+                      {
+                          Id = user.Id,
+                          FullName = user.FullName,
+                          PhoneNumber = user.PhoneNumber,
+                          Email = user.Email,
+                          Type = user.Type,
+                          PhotoUrl = user.PhotoUrl,
+                          AccountNumber = user.PhoneNumber,
+                          AccountHolder = user.AccountHolder,
+                          Iban = user.Iban,
+                          IsBlocked = user.IsBlocked,
+                          Address = user.Address,
+                          DeliveryAddress = user.DeliveryAddress,
+                          Bank = user.Bank,
+                          Role = user.Role,
+                          IsDeleted = user.IsDeleted,
+                          CreatedAt = user.CreatedAt,
+                          VatNumber = user.VatNumber
+                      }).Where(x => x.Type == TypeUser.Administrator).ToList();
+
+        return result;
     }
 
-    public async Task<IEnumerable<User>> GetAllCustomerUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllCustomerUsersAsync()
     {
-        return await _collection.Find(x => x.Type == TypeUser.Customer).ToListAsync();
+        var result = (from user in _collection.AsQueryable()
+                      select new UserDto
+                      {
+                          Id = user.Id,
+                          FullName = user.FullName,
+                          PhoneNumber = user.PhoneNumber,
+                          Email = user.Email,
+                          Type = user.Type,
+                          PhotoUrl = user.PhotoUrl,
+                          AccountNumber = user.PhoneNumber,
+                          AccountHolder = user.AccountHolder,
+                          Iban = user.Iban,
+                          IsBlocked = user.IsBlocked,
+                          Address = user.Address,
+                          DeliveryAddress = user.DeliveryAddress,
+                          Bank = user.Bank,
+                          Role = user.Role,
+                          IsDeleted = user.IsDeleted,
+                          CreatedAt = user.CreatedAt,
+                          VatNumber = user.VatNumber
+                      }).Where(x => x.Type == TypeUser.Customer).ToList();
+
+        return result;
     }
 
-    public async Task<IEnumerable<User>> GetAllSellerUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllSellerUsersAsync()
     {
-        return await _collection.Find(x => x.Type == TypeUser.Seller).ToListAsync();
+        var result = (from user in _collection.AsQueryable()
+                      select new UserDto
+                      {
+                          Id = user.Id,
+                          FullName = user.FullName,
+                          Email = user.Email,
+                          Type = user.Type,
+                          PhoneNumber = user.PhoneNumber,
+                          PhotoUrl = user.PhotoUrl,
+                          AccountNumber = user.PhoneNumber,
+                          AccountHolder = user.AccountHolder,
+                          Iban = user.Iban,
+                          IsBlocked = user.IsBlocked,
+                          Address = user.Address,
+                          DeliveryAddress = user.DeliveryAddress,
+                          Bank = user.Bank,
+                          Role = user.Role,
+                          IsDeleted = user.IsDeleted,
+                          CreatedAt = user.CreatedAt,
+                          VatNumber = user.VatNumber
+                      }).Where(x => x.Type == TypeUser.Seller).ToList();
+
+        return result;
+    }
+
+    public async Task<UserDto> GetAdminUserByEmailAsync(string email)
+    {
+        var result = (from user in _collection.AsQueryable()
+                      select new UserDto
+                      {
+                          Id = user.Id,
+                          FullName = user.FullName,
+                          PhoneNumber = user.PhoneNumber,
+                          Email = user.Email,
+                          Type = user.Type,
+                          PhotoUrl = user.PhotoUrl,
+                          AccountNumber = user.PhoneNumber,
+                          AccountHolder = user.AccountHolder,
+                          Iban = user.Iban,
+                          IsBlocked = user.IsBlocked,
+                          Address = user.Address,
+                          DeliveryAddress = user.DeliveryAddress,
+                          Bank = user.Bank,
+                          Role = user.Role,
+                          IsDeleted = user.IsDeleted,
+                          CreatedAt = user.CreatedAt,
+                          VatNumber = user.VatNumber
+                      }).FirstOrDefault(x => x.Type == TypeUser.Administrator && x.Email == email);
+
+        return result;
     }
 
     private void AddErrors(IdentityResult identityResult)
@@ -99,9 +198,16 @@ public class UserRepository : GenericRepository<User>, IUserRepository
             _result.AddError(error.Description);
         }
     }
-
-    private void AddError(string error)
+    private void AddLoginErrors(IdentityResult identityResult)
     {
-       _result.AddError(error);
+        foreach (var error in identityResult.Errors)
+        {
+            _loginResult.AddError(error.Description);
+        }
+    }
+
+    private void AddLoginError(string error)
+    {
+        _loginResult.AddError(error);
     }
 }

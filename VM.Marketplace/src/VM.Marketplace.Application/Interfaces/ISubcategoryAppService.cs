@@ -1,4 +1,6 @@
-﻿namespace VM.Marketplace.Application.Interfaces;
+﻿using VM.Marketplace.Domain.Dtos;
+
+namespace VM.Marketplace.Application.Interfaces;
 
 public interface ISubcategoryAppService
 {
@@ -7,4 +9,6 @@ public interface ISubcategoryAppService
     Task RemoveSubcategoryAsync(Guid id);
     Task<Subcategory> GetSubcategoryByIdAsync(Guid id);
     Task<IEnumerable<Subcategory>> GetAllSubcategoriesAsync();
+    Task<IEnumerable<SubcategoryDto>> GetSubcategoriesByCategoryId(Guid categoryId);
+
 }

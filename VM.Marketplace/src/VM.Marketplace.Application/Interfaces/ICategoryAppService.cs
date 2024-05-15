@@ -1,4 +1,6 @@
-﻿namespace VM.Marketplace.Application.Interfaces;
+﻿using VM.Marketplace.Domain.Dtos;
+
+namespace VM.Marketplace.Application.Interfaces;
 
 public interface ICategoryAppService
 {
@@ -6,5 +8,5 @@ public interface ICategoryAppService
     Task UpdateCategoryAsync(UpdateCategoryRequest groupRequest);
     Task RemoveCategoryAsync(Guid id);
     Task<Category> GetCategoryByIdAsync(Guid id);
-    Task<IEnumerable<Category>> GetAllCategoriesAsync();
+    Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync();
 }

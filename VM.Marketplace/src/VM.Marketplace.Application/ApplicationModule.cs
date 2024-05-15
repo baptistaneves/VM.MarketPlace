@@ -20,6 +20,8 @@ public static class ApplicationModule
         services.AddScoped<IAddressAppService, AddressAppService>();
         services.AddScoped<IDeliveryAddressAppService, DeliveryAddressAppService>();
         services.AddScoped<IUserAppService, UserAppService>();
+        services.AddScoped<IRoleAppService, RoleAppService>();
+        services.AddScoped<IJwtService, JwtService>();
 
         return services;
     }

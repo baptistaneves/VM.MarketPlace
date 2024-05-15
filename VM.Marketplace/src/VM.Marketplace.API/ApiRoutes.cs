@@ -3,6 +3,23 @@
 public class ApiRoutes
 {
     public const string BaseRoute = "api/v{version:ApiVersion}/[controller]";
+
+    public static class User
+    {
+        public const string AddAdminUser = "adicionar-usuario-admin";
+        public const string GetAllAdminUsers = "obter-usuarios-admin";
+    }
+
+    public static class Role
+    {
+        public const string Add = "adicionar-perfil";
+        public const string Update = "actualizar-perfil";
+        public const string Remove = "remover-perfil/{id}";
+        public const string GetAll = "obter-perfis";
+        public const string GetRoleClaims = "obter-permissoes-de-perfil";
+        public const string GetById = "obter-perfil-por-id/{id}";
+    }
+
     public static class Group
     {
         public const string Add = "adicionar-grupo";
@@ -36,25 +53,27 @@ public class ApiRoutes
         public const string Update = "actualizar-subcategoria";
         public const string Remove = "remover-subcategoria/{id}";
         public const string GetAll = "obter-subcategorias";
+        public const string GetSubcategoriesByCategoryId = "obter-subcategorias-por-categoria/{categoryId}";
         public const string GetById = "obter-subcategoria-por-id/{id}";
     }
 
     public static class State
-    {
-        public const string Add = "adicionar-municipio";
-        public const string Update = "actualizar-municipio";
-        public const string Remove = "remover-municipio/{id}";
-        public const string GetAll = "obter-municipios";
-        public const string GetById = "obter-municipio-por-id/{id}";
-    }
-
-    public static class City
     {
         public const string Add = "adicionar-provincia";
         public const string Update = "actualizar-provincia";
         public const string Remove = "remover-provincia/{id}";
         public const string GetAll = "obter-provincias";
         public const string GetById = "obter-provincia-por-id/{id}";
+    }
+
+    public static class City
+    {
+        public const string Add = "adicionar-municipio";
+        public const string Update = "actualizar-municipio";
+        public const string Remove = "remover-municipio/{id}";
+        public const string GetAll = "obter-municipios";
+        public const string GetCitiesByStateId = "obter-municipios-por-provincia/{stateId}";
+        public const string GetById = "obter-municipio-por-id/{id}";
     }
 
     public static class Address

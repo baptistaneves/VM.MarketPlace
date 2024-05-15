@@ -1,4 +1,6 @@
-﻿namespace VM.Marketplace.Application.Services;
+﻿using VM.Marketplace.Domain.Dtos;
+
+namespace VM.Marketplace.Application.Services;
 
 public class SubcategoryAppService : BaseAppService, ISubcategoryAppService
 {
@@ -25,6 +27,11 @@ public class SubcategoryAppService : BaseAppService, ISubcategoryAppService
     public async Task<IEnumerable<Subcategory>> GetAllSubcategoriesAsync()
     {
         return await _subcategoryRepository.GetAllAsync();
+    }
+
+    public async Task<IEnumerable<SubcategoryDto>> GetSubcategoriesByCategoryId(Guid categoryId)
+    {
+        return await _subcategoryRepository.GetSubcategoriesByCategoryId(categoryId);
     }
 
     public async Task<Subcategory> GetSubcategoryByIdAsync(Guid id)

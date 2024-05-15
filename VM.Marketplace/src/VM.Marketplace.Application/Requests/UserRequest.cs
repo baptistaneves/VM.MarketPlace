@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VM.Marketplace.Domain.Results;
+namespace VM.Marketplace.Application.Requests;
 
 public class CreateAdminUserRequest
 {
@@ -16,6 +16,9 @@ public class CreateAdminUserRequest
 
     [Required(ErrorMessage = UserErrorMessage.PasswordIsRequired)]
     public string Password { get; set; }
+
+    [Required(ErrorMessage = UserErrorMessage.RoleIsRequired)]
+    public string Role { get; set; }
 
 }
 

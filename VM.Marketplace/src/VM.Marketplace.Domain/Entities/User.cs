@@ -48,7 +48,8 @@ public class User : Entity
         };
     }
 
-    public static User CreateAdminUser(string fullName, string email, string phoneNumber, string password)
+    public static User CreateAdminUser(string fullName, string email, string phoneNumber, string password,
+        string role)
     {
         return new User
         {
@@ -56,6 +57,7 @@ public class User : Entity
             Email = email,
             PhoneNumber = phoneNumber,
             Password = password,
+            Role = role,
             Type = TypeUser.Administrator,
             CreatedAt = DateTime.UtcNow
         };

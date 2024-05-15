@@ -17,6 +17,12 @@ public class SubcategoriesController : BaseController
         return Response(await _subcategoryAppService.GetAllSubcategoriesAsync());
     }
 
+    [HttpGet(ApiRoutes.Subcategory.GetSubcategoriesByCategoryId)]
+    public async Task<ActionResult> GetSubcategoriesByCategoryId(Guid categoryId)
+    {
+        return Response(await _subcategoryAppService.GetSubcategoriesByCategoryId(categoryId));
+    }
+
     [HttpGet(ApiRoutes.Subcategory.GetById)]
     [ValidateGuid("id")]
     public async Task<ActionResult> GetById(Guid id)

@@ -1,4 +1,6 @@
-﻿namespace VM.Marketplace.Application.Interfaces;
+﻿using VM.Marketplace.Domain.Dtos;
+
+namespace VM.Marketplace.Application.Interfaces;
 
 public interface ICityAppService
 {
@@ -7,4 +9,6 @@ public interface ICityAppService
     Task RemoveCityAsync(Guid id);
     Task<City> GetCityByIdAsync(Guid id);
     Task<IEnumerable<City>> GetAllCitiesAsync();
+    Task<IEnumerable<CityDto>> GetCitiesByStateId(Guid id);
+
 }

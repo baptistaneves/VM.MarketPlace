@@ -3,6 +3,7 @@
 public class UserErrorMessage
 {
     public const string FullNameIsRequired = "O nome completo deve ser informado";
+    public const string RoleIsRequired = "O perfil do utilizador deve ser informado";
     public const string EmailIsRequired = "O e-mail deve ser informado";
     public const string VatNumberIsRequired = "O número de contribuinte deve ser informado";
     public const string PasswordIsRequired = "A senha deve ser informada";
@@ -13,6 +14,16 @@ public class UserErrorMessage
     public const string UserNotFound = "O usuário solicitado não foi encontrado";
     public const string IncorretEmailOrPassword = "E-mail ou senha errada. Tente novamente";
     public const string LockoutFailure = "Usuário temporariamente bloqueado por tentativas inválidas. Tente novamente dentro de 5 minutos";
+}
+
+public class RoleErrorMessage
+{
+    public const string NameIsRequired = "O nome do perfil deve ser informado";
+    public const string NameMinLength = "O nome deve ter no mínimo 3 caracteres";
+    public const string IdNotValid = "O ID do perfil informado não é válido";
+    public const string RoleAlreadyExists = "Já existe um perfil cadastrado com esse nome";
+
+
 }
 
 public class GroupErrorMessage

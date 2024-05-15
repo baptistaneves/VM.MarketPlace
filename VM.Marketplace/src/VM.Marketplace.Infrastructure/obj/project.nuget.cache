@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MxA87QFAH7xgOmB71/FGp8AFGT1nFSpzROIt5U6+h6PE7t5x1412DSLBXg2dEQAJ7hHBHnZIbPkGhpGDBsNESQ==",
+  "dgSpecHash": "HjjnXqyIob4ax1WbvlyCx3BE6evymwgmYISiLuiSZQxghgR4VcMRwiEVmwG1SC9QFY9KAS1oef9HXDbc9VhijA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Infrastructure\\VM.Marketplace.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,10 @@
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.options\\3.1.12\\microsoft.extensions.options.3.1.12.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.webencoders\\2.2.0\\microsoft.extensions.webencoders.2.2.0.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.5.1\\microsoft.identitymodel.abstractions.7.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.5.1\\microsoft.identitymodel.jsonwebtokens.7.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.logging\\7.5.1\\microsoft.identitymodel.logging.7.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.5.1\\microsoft.identitymodel.tokens.7.5.1.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
@@ -50,6 +54,7 @@
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.5.1\\system.identitymodel.tokens.jwt.7.5.1.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",

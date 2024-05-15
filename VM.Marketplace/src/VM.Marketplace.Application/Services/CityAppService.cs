@@ -1,4 +1,6 @@
-﻿namespace VM.Marketplace.Application.Services;
+﻿using VM.Marketplace.Domain.Dtos;
+
+namespace VM.Marketplace.Application.Services;
 
 public class CityAppService : BaseAppService, ICityAppService
 {
@@ -25,6 +27,11 @@ public class CityAppService : BaseAppService, ICityAppService
     public async Task<IEnumerable<City>> GetAllCitiesAsync()
     {
         return await _cityRepository.GetAllAsync();
+    }
+
+    public async Task<IEnumerable<CityDto>> GetCitiesByStateId(Guid id)
+    {
+        return await _cityRepository.GetCitiesByStateId(id);
     }
 
     public async Task<City> GetCityByIdAsync(Guid id)

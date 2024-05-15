@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using VM.Marketplace.API.AppSettings;
-using VM.Marketplace.API.Extensions;
+using VM.Marketplace.Application.AppSettings;
 using VM.Marketplace.API.Registers.Interfaces;
 
 namespace VM.Marketplace.API.Registers;

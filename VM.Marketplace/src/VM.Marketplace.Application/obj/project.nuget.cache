@@ -1,13 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "zhor8LoQsg6RW210mJV0XSp4/quCPFH3j0RywPFYK9oxH12cFEYDiCjT24d5YUktbA7Cj8vh9FjCHuqnlrvzXA==",
+  "dgSpecHash": "S4FX1LHk9ND8OTNo08bh/A9EAF8SbnBwVEq5lLPEdcOjbBDhEwjYq4bh50ecUKTyUTtP6xOw98l6nPunE9hadQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Application\\VM.Marketplace.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
-    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.5.1\\microsoft.identitymodel.abstractions.7.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.5.1\\microsoft.identitymodel.jsonwebtokens.7.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.logging\\7.5.1\\microsoft.identitymodel.logging.7.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.5.1\\microsoft.identitymodel.tokens.7.5.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.5.1\\system.identitymodel.tokens.jwt.7.5.1.nupkg.sha512"
   ],
   "logs": []
 }

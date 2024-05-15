@@ -10,4 +10,19 @@ public class UsersController : BaseController
     {
         _userAppService = userAppService;
     }
+
+    [HttpGet(ApiRoutes.User.GetAllAdminUsers)]
+    public async Task<ActionResult> GetAllAdminUsers()
+    {
+        return Response(await _userAppService.GetAllAdminUsersAsync());
+    }
+
+    [HttpPost(ApiRoutes.User.AddAdminUser)]
+    [ValidateModel]
+    public async Task<ActionResult> AddAdminUser([FromBody] CreateAdminUserRequest userRequest)
+    {
+        await _userAppService.AddAdmin(userRequest);
+
+        return Response();
+    }
 }
