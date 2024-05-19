@@ -8,6 +8,8 @@ public class ApiRoutes
     {
         public const string AddAdminUser = "adicionar-usuario-admin";
         public const string GetAllAdminUsers = "obter-usuarios-admin";
+        public const string RemoveUserAdmin = "remover-usuario-admin/{id}";
+        public const string UpdateUserAdmin = "actualizar-usuario-admin";
     }
 
     public static class Role

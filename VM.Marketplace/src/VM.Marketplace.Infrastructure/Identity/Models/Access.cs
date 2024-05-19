@@ -3,6 +3,7 @@
 public static class ClaimType
 {
     public const string User = "Usuário";
+    public const string Dashboard = "Dashboard";
     public const string Role = "Perfil";
     public const string Address = "Endereço";
     public const string DeliveryAddress = "Endereço de Entrega";

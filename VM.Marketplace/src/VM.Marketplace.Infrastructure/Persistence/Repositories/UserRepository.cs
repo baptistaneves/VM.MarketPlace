@@ -25,6 +25,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
         var newUser = new ApplicationUser
         {
+            Id = user.Id,
             FullName = user.FullName,
             Role = user.Role,
             UserName = user.Email,
@@ -44,6 +45,27 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         };
 
         var identityResult = await _userManager.CreateAsync(newUser, user.Password);
+
+        if (!identityResult.Succeeded)
+        {
+            AddErrors(identityResult);
+            return _result;
+        }
+
+        return _result;
+    }
+
+    public async Task<OperationResult<User>> ReplaceAdminUserOnceAsync(User updatedUser)
+    {
+        var currentUserState = await _userManager.FindByIdAsync(updatedUser.Id.ToString());
+
+        currentUserState.FullName = updatedUser.FullName;
+        currentUserState.PhoneNumber = updatedUser.PhoneNumber;
+        currentUserState.Email = updatedUser.Email;
+        currentUserState.Role = updatedUser.Role;
+
+
+        var identityResult = await _userManager.UpdateAsync(currentUserState);
 
         if (!identityResult.Succeeded)
         {
@@ -210,4 +232,58 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
         _loginResult.AddError(error);
     }
+
+    public async Task<OperationResult<User>> InsertSellerUserOnceFromDashboardAsync(User user)
+    {
+        var newUser = new ApplicationUser
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Role = user.Role,
+            UserName = user.Email,
+            Email = user.Email,
+            PhoneNumber = user.PhoneNumber,
+            Type = user.Type,
+            Address = user.Address,
+            DeliveryAddress = user.DeliveryAddress,
+            PhotoUrl = user.PhotoUrl,
+            VatNumber = user.VatNumber,
+            Bank = user.Bank,
+            AccountNumber = user.AccountNumber,
+            Iban = user.Iban,
+            CreatedAt = user.CreatedAt,
+            IsBlocked = user.IsBlocked,
+            IsDeleted = user.IsDeleted,
+        };
+
+        var identityResult = await _userManager.CreateAsync(newUser, user.Password);
+
+        if (!identityResult.Succeeded)
+        {
+            AddErrors(identityResult);
+            return _result;
+        }
+
+        return _result;
+    }
+
+    public async Task<OperationResult<User>> ReplaceSellerUserOnceFromDashboardAsync(User updatedUser)
+    {
+        var currentUserState = await _userManager.FindByIdAsync(updatedUser.Id.ToString());
+
+        currentUserState.FullName = updatedUser.FullName;
+        currentUserState.PhoneNumber = updatedUser.PhoneNumber;
+        currentUserState.Email = updatedUser.Email;
+
+        var identityResult = await _userManager.UpdateAsync(currentUserState);
+
+        if (!identityResult.Succeeded)
+        {
+            AddErrors(identityResult);
+            return _result;
+        }
+
+        return _result;
+    }
+
 }

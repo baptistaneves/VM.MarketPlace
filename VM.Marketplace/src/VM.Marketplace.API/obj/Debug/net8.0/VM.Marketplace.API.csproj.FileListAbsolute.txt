@@ -97,14 +97,6 @@ D:\Modern View\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\ne
 D:\Modern View\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.pdb
 D:\Modern View\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.genruntimeconfig.cache
 D:\Modern View\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\ref\VM.Marketplace.API.dll
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.csproj.AssemblyReference.cache
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.AssemblyInfoInputs.cache
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.AssemblyInfo.cs
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.csproj.CoreCompileInputs.cache
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.sourcelink.json
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\bin\Debug\net8.0\appsettings.json
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\bin\Debug\net8.0\VM.Marketplace.API.exe
@@ -154,6 +146,14 @@ C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\bin\Debug\net8.0\VM.Marketplace.Application.pdb
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\bin\Debug\net8.0\VM.Marketplace.Domain.pdb
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\bin\Debug\net8.0\VM.Marketplace.Infrastructure.pdb
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.csproj.AssemblyReference.cache
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.AssemblyInfoInputs.cache
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.AssemblyInfo.cs
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.csproj.CoreCompileInputs.cache
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\VM.Marketplace.API.sourcelink.json
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Baptista Neves\Desktop\Arquivos\Projectos\Visão Moderna\VM.MarketPlace\VM.Marketplace\src\VM.Marketplace.API\obj\Debug\net8.0\staticwebassets\msbuild.VM.Marketplace.API.Microsoft.AspNetCore.StaticWebAssets.props

@@ -3,6 +3,13 @@
 public class UserErrorMessage
 {
     public const string FullNameIsRequired = "O nome completo deve ser informado";
+    public const string AddressIsRequired = "O endereço deve ser informado";
+    public const string DeliveryAddressIsRequired = "O endereço de entrega deve ser informado";
+    public const string BankIsRequired = "O nome banco deve ser informado";
+    public const string AccountNumberIsRequired = "A conta bancária deve ser informada";
+    public const string AccountHolderIsRequired = "O nome da conta deve ser informado";
+    public const string IbanIsRequired = "O IBAN deve ser informado";
+    public const string IdNotValid = "O ID do utilizador informado não é válido";
     public const string RoleIsRequired = "O perfil do utilizador deve ser informado";
     public const string EmailIsRequired = "O e-mail deve ser informado";
     public const string VatNumberIsRequired = "O número de contribuinte deve ser informado";

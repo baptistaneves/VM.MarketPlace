@@ -35,6 +35,51 @@ public class User : Entity
         };
     }
 
+    public static User CreateSellerUserFromDashboard(string fullName, string email, string phoneNumber,
+        string vatNumber, string iban, string address, string deliverAddress, string accountHolder,
+        string accountNumber, string bank, string password)
+    {
+        return new User
+        {
+            FullName = fullName,
+            Email = email,
+            PhoneNumber = phoneNumber,
+            VatNumber = vatNumber,
+            Iban = iban,
+            AccountHolder = accountHolder,
+            Address = address,
+            DeliveryAddress = deliverAddress,
+            AccountNumber = accountNumber,
+            Bank = bank,
+            Password = password,
+            Type = TypeUser.Seller,
+            CreatedAt = DateTime.UtcNow
+        };
+    }
+
+    public static User UpdateSellerUserFromDashboard(Guid id, string fullName, string email, string phoneNumber,
+       string vatNumber, string iban, string address, string deliverAddress, string accountHolder,
+       string accountNumber, string bank, string password)
+    {
+        return new User
+        {
+            Id = id,
+            FullName = fullName,
+            Email = email,
+            PhoneNumber = phoneNumber,
+            VatNumber = vatNumber,
+            Iban = iban,
+            AccountHolder = accountHolder,
+            Address = address,
+            DeliveryAddress = deliverAddress,
+            AccountNumber = accountNumber,
+            Bank = bank,
+            Password = password,
+            Type = TypeUser.Seller,
+            CreatedAt = DateTime.UtcNow
+        };
+    }
+
     public static User CreateCustomerUser(string fullName, string email, string phoneNumber, string password)
     {
         return new User
@@ -48,6 +93,7 @@ public class User : Entity
         };
     }
 
+
     public static User CreateAdminUser(string fullName, string email, string phoneNumber, string password,
         string role)
     {
@@ -60,6 +106,18 @@ public class User : Entity
             Role = role,
             Type = TypeUser.Administrator,
             CreatedAt = DateTime.UtcNow
+        };
+    }
+
+    public static User UpdateAdminUser(Guid id, string fullName, string email, string phoneNumber, string role)
+    {
+        return new User
+        {
+            Id = id,
+            FullName = fullName,
+            Email = email,
+            PhoneNumber = phoneNumber,
+            Role = role
         };
     }
 }

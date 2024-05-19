@@ -15,6 +15,6 @@ public class RoleRequest
 
 public class ClaimRequest
 {
-    public string ClaimType { get; set; }
-    public string ClaimValue { get; set; }
+    public string Type { get; set; }
+    public string Value { get; set; }
 }

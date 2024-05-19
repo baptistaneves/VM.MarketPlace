@@ -1,7 +1,10 @@
-﻿namespace VM.Marketplace.API.Controllers.V1;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace VM.Marketplace.API.Controllers.V1;
 
 [ApiVersion("1.0")]
 [Route(ApiRoutes.BaseRoute)]
+[Authorize]
 public class GroupsController : BaseController
 {
     private readonly IGroupAppService _groupService;

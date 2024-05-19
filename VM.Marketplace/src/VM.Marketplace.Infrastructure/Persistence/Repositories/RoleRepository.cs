@@ -124,6 +124,7 @@ public class RoleRepository : GenericRepository<Role>, IRoleRepository
         Dictionary<string, List<string>> claims = new()
         {
                 { ClaimType.User, new List<string> { ClaimValue.View, ClaimValue.Add, ClaimValue.Update, ClaimValue.Reset, ClaimValue.Block, ClaimValue.Unblock, ClaimValue.Remove} },
+                { ClaimType.Dashboard, new List<string> { ClaimValue.View } },
                 { ClaimType.Role, new List<string> {  ClaimValue.View, ClaimValue.Add, ClaimValue.Update, ClaimValue.Remove } },
                 { ClaimType.Group, new List<string> {  ClaimValue.View, ClaimValue.Add, ClaimValue.Update, ClaimValue.Remove } },
                 { ClaimType.State, new List<string> {  ClaimValue.View, ClaimValue.Add, ClaimValue.Update, ClaimValue.Remove } },

@@ -14,7 +14,9 @@ public class RoleAppService : BaseAppService, IRoleAppService
     {
         if (!Validate(new CreateRoleValidation(), roleRequest)) return;
 
-        if (_roleRepository.FilterAsync(x => x.Name == roleRequest.Name).Result.Any())
+        var roleExists = await _roleRepository.GetRoleByName(roleRequest.Name);
+
+        if (roleExists != null)
         {
             Notify(RoleErrorMessage.RoleAlreadyExists);
             return;
@@ -26,7 +28,7 @@ public class RoleAppService : BaseAppService, IRoleAppService
         {
             roleRequest.Claims.ForEach(claim =>
             {
-                newRole.AddClaim(new RoleClaim(claim.ClaimType, claim.ClaimValue));
+                newRole.AddClaim(new RoleClaim(claim.Type, claim.Value));
             });
         }
 
@@ -72,7 +74,7 @@ public class RoleAppService : BaseAppService, IRoleAppService
         {
             roleRequest.Claims.ForEach(claim =>
             {
-                updatedRole.AddClaim(new RoleClaim(claim.ClaimType, claim.ClaimValue));
+                updatedRole.AddClaim(new RoleClaim(claim.Type, claim.Value));
             });
         }
 
