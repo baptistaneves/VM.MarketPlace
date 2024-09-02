@@ -64,6 +64,8 @@ public static class InfrastructureModule
         services.AddScoped<IDeliveryAddressRepository, DeliveryAddressRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRoleRepository, RoleRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
 
         return services;
     }

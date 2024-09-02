@@ -8,76 +8,67 @@ public class User : Entity
     public string Email { get; private set; }
     public string PhoneNumber { get; private set; }
     public TypeUser Type { get; private set; }
+    public TypeSeller TypeSeller { get; private set; }
     public string PhotoUrl { get; private set; }
     public string Address { get; private set; }
-    public string DeliveryAddress { get; private set; }
+    public string City { get; private set; }
+    public string State { get; private set; }
     public string VatNumber { get; private set; }
     public string Bank { get; private set; }
     public string AccountNumber { get; private set; }
     public string AccountHolder { get; private set; }
     public string Iban { get; private set; }
+    public string TaxIdentificationNumber { get; private set; }
+    public string BusinessLicenseUrl { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public bool IsDeleted { get; private set; }
     public bool IsBlocked { get; private set; }
+    public bool IsVerified { get; private set; }
 
-    public static User CreateSellerUser(string fullName, string email, string phoneNumber,
-        string vatNumber, string password)
+    public static User CreateSellerUser(string fullName, string email,
+        string phoneNumber, string password)
     {
         return new User
         {
             FullName = fullName,
             Email = email,
             PhoneNumber = phoneNumber,
-            VatNumber = vatNumber,
             Password = password,
             Type = TypeUser.Seller,
             CreatedAt = DateTime.UtcNow
         };
     }
 
-    public static User CreateSellerUserFromDashboard(string fullName, string email, string phoneNumber,
-        string vatNumber, string iban, string address, string deliverAddress, string accountHolder,
-        string accountNumber, string bank, string password)
+    public static User UpdateSellerUser(Guid id, string fullName, string email,
+       string phoneNumber, string city, string state, string address,
+       string taxIdentificationNumber, TypeSeller typeSeller, string businessLicense)
     {
         return new User
         {
+            Id =  id,
             FullName = fullName,
             Email = email,
             PhoneNumber = phoneNumber,
-            VatNumber = vatNumber,
-            Iban = iban,
-            AccountHolder = accountHolder,
+            City = city,
+            State = state,
             Address = address,
-            DeliveryAddress = deliverAddress,
-            AccountNumber = accountNumber,
-            Bank = bank,
-            Password = password,
-            Type = TypeUser.Seller,
-            CreatedAt = DateTime.UtcNow
+            TaxIdentificationNumber = taxIdentificationNumber,
+            TypeSeller = typeSeller
         };
     }
 
-    public static User UpdateSellerUserFromDashboard(Guid id, string fullName, string email, string phoneNumber,
-       string vatNumber, string iban, string address, string deliverAddress, string accountHolder,
-       string accountNumber, string bank, string password)
+    public static User AddBusinessLicense(Guid id, string businessLicenseUrl)
     {
         return new User
         {
             Id = id,
-            FullName = fullName,
-            Email = email,
-            PhoneNumber = phoneNumber,
-            VatNumber = vatNumber,
-            Iban = iban,
-            AccountHolder = accountHolder,
-            Address = address,
-            DeliveryAddress = deliverAddress,
-            AccountNumber = accountNumber,
-            Bank = bank,
-            Password = password,
-            Type = TypeUser.Seller,
-            CreatedAt = DateTime.UtcNow
+            BusinessLicenseUrl = businessLicenseUrl
         };
+    }
+
+    public void SetUserAsVerified()
+    {
+        IsVerified = true;
     }
 
     public static User CreateCustomerUser(string fullName, string email, string phoneNumber, string password)

@@ -7,9 +7,14 @@ public class ApiRoutes
     public static class User
     {
         public const string AddAdminUser = "adicionar-usuario-admin";
+        public const string AddSellerUser = "criar-conta";
         public const string GetAllAdminUsers = "obter-usuarios-admin";
+        public const string GetCurrentUserData = "obter-dados-do-usuario-logado";
         public const string RemoveUserAdmin = "remover-usuario-admin/{id}";
         public const string UpdateUserAdmin = "actualizar-usuario-admin";
+        public const string Update = "actualizar-dados-da-minha-conta";
+        public const string CustomerOrSellerLogin = "fazer-login";
+        public const string AddBusinessLicense = "enviar-alvara-comercial";
     }
 
     public static class Role
@@ -47,6 +52,24 @@ public class ApiRoutes
         public const string Remove = "remover-categoria/{id}";
         public const string GetAll = "obter-categorias";
         public const string GetById = "obter-categoria-por-id/{id}";
+    }
+
+    public static class Comment
+    {
+        public const string Add = "criar-comentario";
+        public const string Remove = "remover-comentario/{id}";
+        public const string GetAllCommentsByProductId = "obter-comentarios-por-produto-id/{productId}";
+        public const string GetById = "obter-comentario-por-id/{id}";
+    }
+
+    public static class Product
+    {
+        public const string Add = "adicionar-produto";
+        public const string Update = "actualizar-produto";
+        public const string Remove = "remover-produto/{id}";
+        public const string GetAll = "obter-produtos";
+        public const string GetById = "obter-produto-por-id/{id}";
+        public const string GetProdutsByUserId = "obter-produtos-por-usuario/{userId}";
     }
 
     public static class Subcategory

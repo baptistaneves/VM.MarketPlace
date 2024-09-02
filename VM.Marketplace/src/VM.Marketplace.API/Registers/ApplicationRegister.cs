@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.FileProviders;
 using VM.Marketplace.API.Middleware;
 using VM.Marketplace.API.Registers.Interfaces;
 
@@ -23,6 +24,20 @@ public class ApplicationRegister : IWebApplicationRegister
         });
 
         app.UseHttpsRedirection();
+
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            FileProvider = new PhysicalFileProvider(
+                Path.Combine(app.Environment.ContentRootPath, "wwwroot", "Categories")),
+            RequestPath = "/Categories"
+        });
+
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            FileProvider = new PhysicalFileProvider(
+                Path.Combine(app.Environment.ContentRootPath, "wwwroot", "Products")),
+            RequestPath = "/Products"
+        });
 
         app.UseCors("AllowLocalhost4200");
 

@@ -21,6 +21,8 @@ public static class ApplicationModule
         services.AddScoped<IDeliveryAddressAppService, DeliveryAddressAppService>();
         services.AddScoped<IUserAppService, UserAppService>();
         services.AddScoped<IRoleAppService, RoleAppService>();
+        services.AddScoped<IProductAppService, ProductAppService>();
+        services.AddScoped<ICommentAppService, CommentAppService>();
         services.AddScoped<IJwtService, JwtService>();
 
         return services;

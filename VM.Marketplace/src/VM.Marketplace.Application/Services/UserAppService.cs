@@ -15,22 +15,25 @@ public class UserAppService : BaseAppService, IUserAppService
         _jwtService = jwtService;
     }
 
-    public async Task<OperationResult<User>> AddAdmin(CreateAdminUserRequest userRequest)
+    public async Task<bool> AddAdmin(CreateAdminUserRequest userRequest)
     {
         if (!Validate(new CreateAdminUserValidation(), userRequest)) new OperationResult<User>(); 
 
         var newUser = User.CreateAdminUser(userRequest.FullName, userRequest.Email, 
             userRequest.PhoneNumber, userRequest.Password, userRequest.Role);
 
-        var result = await _userRepository.InsertAdminUserOnceAsync(newUser);
+        var result = await _userRepository.InsertUserOnceAsync(newUser);
 
-        if(result.HasError)
+        if (result.HasError)
+        {
             result.Errors.ForEach(error => { Notify(error.Message); });
+            return false;
+        }
 
-        return result;
+        return true;
     }
 
-    public async Task<OperationResult<User>> UpdateAdmin(UpdateAdminUserRequest updateAdmin)
+    public async Task<bool> UpdateAdmin(UpdateAdminUserRequest updateAdmin)
     {
         if (!Validate(new UpdateAdminUserValidation(), updateAdmin)) new OperationResult<User>();
 
@@ -39,37 +42,63 @@ public class UserAppService : BaseAppService, IUserAppService
         var result = await _userRepository.ReplaceAdminUserOnceAsync(updatedUser);
 
         if (result.HasError)
+        {
             result.Errors.ForEach(error => { Notify(error.Message); });
+            return false;
+        }
 
-        return result;
+        return true;
     }
 
-    public async Task<OperationResult<User>> AddCustomer(CreateCustomerUserRequest userRequest)
+    public async Task<bool> UpdateSeller(UpdateSellerUserRequest userRequest)
+    {
+
+        if (!Validate(new UpdateSellerUserValidation(), userRequest)) new OperationResult<User>();
+
+        var user = User.UpdateSellerUser(userRequest.Id, userRequest.FullName, userRequest.Email, userRequest.PhoneNumber,
+            userRequest.City, userRequest.State, userRequest.Address, 
+            userRequest.TaxIdentificationNumber, userRequest.TypeSeller, userRequest.BusinessLicense);
+
+        var result = await _userRepository.ReplaceSellerUserOnceAsync(user);
+
+        if (result.HasError)
+        {
+            result.Errors.ForEach(error => { Notify(error.Message); });
+            return false;
+        }
+
+        return true;
+    }
+
+    public async Task<AuthenticationResultDto> AddCustomer(CreateCustomerUserRequest userRequest)
     {
         if (!Validate(new CreateCustomerUserValidation(), userRequest)) new OperationResult<User>();
 
         var newUser = User.CreateCustomerUser(userRequest.FullName, userRequest.Email, userRequest.PhoneNumber, userRequest.Password);
 
-        var result = await _userRepository.InsertAdminUserOnceAsync(newUser);
+        var result = await _userRepository.InsertUserOnceAsync(newUser);
 
         if (result.HasError)
             result.Errors.ForEach(error => { Notify(error.Message); });
 
-        return result;
+        return await _jwtService.GenerateToken(result.Payload);
     }
 
-    public async Task<OperationResult<User>> AddSeller(CreateSellerUserRequest userRequest)
+    public async Task<AuthenticationResultDto> AddSeller(CreateSellerUserRequest userRequest)
     {
         if (!Validate(new CreateSellerUserValidation(), userRequest)) new OperationResult<User>();
 
-        var newUser = User.CreateSellerUser(userRequest.FullName, userRequest.Email, userRequest.PhoneNumber, userRequest.VatNumber, userRequest.Password);
+        var newUser = User.CreateSellerUser(userRequest.FullName, userRequest.Email, userRequest.PhoneNumber, userRequest.Password);
 
-        var result = await _userRepository.InsertAdminUserOnceAsync(newUser);
+        var result = await _userRepository.InsertUserOnceAsync(newUser);
 
         if (result.HasError)
+        {
             result.Errors.ForEach(error => { Notify(error.Message); });
+            return null;
+        }
 
-        return result;
+        return await _jwtService.GenerateToken(result.Payload);
     }
 
     public async Task<IEnumerable<UserDto>> GetAllAdminUsersAsync()
@@ -87,9 +116,9 @@ public class UserAppService : BaseAppService, IUserAppService
         return await _userRepository.GetAllSellerUsersAsync();
     }
 
-    public async Task<User> GetUserByIdAsync(Guid id)
+    public async Task<UserDto> GetUserByIdAsync(Guid id)
     {
-        return await _userRepository.GetByIdAsync(id);
+        return await _userRepository.GetUserByIdAsync(id);
     }
 
     public async Task<AuthenticationResultDto> Login(LoginRequest loginRequest)
@@ -107,41 +136,29 @@ public class UserAppService : BaseAppService, IUserAppService
         return await _jwtService.GenerateToken(result.Payload);
     }
 
+    public async Task<AuthenticationResultDto> CustomerOrSellerLogin(LoginRequest loginRequest)
+    {
+        if (!Validate(new LoginValidation(), loginRequest)) new OperationResult<User>();
+
+        var result = await _userRepository.CustomerOrSellerLogin(loginRequest.Email, loginRequest.Password);
+
+        if (result.HasError)
+        {
+            result.Errors.ForEach(error => { Notify(error.Message); });
+            return null;
+        }
+
+        return await _jwtService.GenerateToken(result.Payload);
+    }
+
     public async Task Remove(Guid id)
     {
         await _userRepository.DeleteOnceAsync(id);
     }
 
-    public async Task<OperationResult<User>> InsertSellerUserOnceFromDashboardAsync(CreateSellerUserFromDashboardRequest userRequest)
+    public async Task AddBusinessLicense(Guid userId, string businessLicenseUrl)
     {
-        if (!Validate(new CreateSellerUserFromDashboardValidation(), userRequest)) new OperationResult<User>();
 
-        var newUser = User.CreateSellerUserFromDashboard(userRequest.FullName, userRequest.Email,
-            userRequest.PhoneNumber, userRequest.VatNumber, userRequest.Iban, userRequest.Address, 
-            userRequest.DeliveryAddress, userRequest.AccountHolder, userRequest.AccountNumber, userRequest.Bank, userRequest.Password);
-
-        var result = await _userRepository.InsertSellerUserOnceFromDashboardAsync(newUser);
-
-        if (result.HasError)
-            result.Errors.ForEach(error => { Notify(error.Message); });
-
-        return result;
+        await _userRepository.UpdateFieldAsync(userId, "BusinessLicenseUrl", businessLicenseUrl);
     }
-
-    public async Task<OperationResult<User>> UpdateSellerUserOnceFromDashboardAsync(CreateSellerUserFromDashboardRequest updatedUserRequest)
-    {
-        if (!Validate(new UpdateSellerUserFromDashboardValidation(), updatedUserRequest)) new OperationResult<User>();
-
-        var updatedUser = User.CreateSellerUserFromDashboard(updatedUserRequest.FullName, updatedUserRequest.Email,
-             updatedUserRequest.PhoneNumber, updatedUserRequest.VatNumber, updatedUserRequest.Iban, updatedUserRequest.Address,
-             updatedUserRequest.DeliveryAddress, updatedUserRequest.AccountHolder, updatedUserRequest.AccountNumber, updatedUserRequest.Bank, updatedUserRequest.Password);
-
-        var result = await _userRepository.ReplaceSellerUserOnceFromDashboardAsync(updatedUser);
-
-        if (result.HasError)
-            result.Errors.ForEach(error => { Notify(error.Message); });
-
-        return result;
-    }
-
 }

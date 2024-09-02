@@ -13,3 +13,4 @@ global using Microsoft.AspNetCore.Identity;
 global using VM.Marketplace.Domain.Notifications.Results;
 global using VM.Marketplace.Domain.Results;
 global using VM.Marketplace.Infrastructure.Identity.Models;
+global using VM.Marketplace.Domain.Dtos;

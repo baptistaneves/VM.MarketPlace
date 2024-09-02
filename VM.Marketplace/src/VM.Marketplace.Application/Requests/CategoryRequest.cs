@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace VM.Marketplace.Application.Requests;
 
@@ -8,8 +9,9 @@ public class CreateCategoryRequest
     [MinLength(3, ErrorMessage = CategoryErrorMessage.DescriptionMinLength)]
     public string Description { get; set; }
 
-    [Required(ErrorMessage = CategoryErrorMessage.GroupIsRequired)]
-    public Guid GroupId { get; set; }
+    public IFormFile? ImageFile { get; set; }
+
+    public string ImageUrl { get; set; } = string.Empty;
 }
 
 public class UpdateCategoryRequest
@@ -21,6 +23,7 @@ public class UpdateCategoryRequest
     [MinLength(3, ErrorMessage = CategoryErrorMessage.DescriptionMinLength)]
     public string Description { get; set; }
 
-    [Required(ErrorMessage = CategoryErrorMessage.GroupIsRequired)]
-    public Guid GroupId { get; set; }
+    public IFormFile? ImageFile { get; set; }
+
+    public string ImageUrl { get; set; } = string.Empty;
 }

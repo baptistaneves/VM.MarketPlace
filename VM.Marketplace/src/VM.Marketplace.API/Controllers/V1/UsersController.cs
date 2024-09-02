@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using VM.Marketplace.API.Extensions;
 
 namespace VM.Marketplace.API.Controllers.V1;
 
 [ApiVersion("1.0")]
 [Route(ApiRoutes.BaseRoute)]
-[Authorize]
+//[Authorize]
 public class UsersController : BaseController
 {
     private readonly IUserAppService _userAppService;
@@ -18,6 +19,12 @@ public class UsersController : BaseController
     public async Task<ActionResult> GetAllAdminUsers()
     {
         return Response(await _userAppService.GetAllAdminUsersAsync());
+    }
+
+    [HttpGet(ApiRoutes.User.GetCurrentUserData)]
+    public async Task<ActionResult> GetCurrentUserData()
+    {
+        return Response(await _userAppService.GetUserByIdAsync(HttpContext.GetIdentityUserId()));
     }
 
     [HttpPost(ApiRoutes.User.AddAdminUser)]
@@ -45,5 +52,101 @@ public class UsersController : BaseController
         await _userAppService.Remove(id);
 
         return Response();
+    }
+
+    [AllowAnonymous]
+    [HttpPost(ApiRoutes.User.AddSellerUser)]
+    [ValidateModel]
+    public async Task<ActionResult> AddSellerUser([FromBody] CreateSellerUserRequest userRequest)
+    {
+        var response = await _userAppService.AddSeller(userRequest);
+
+        return Response(response);
+    }
+
+    [HttpPut(ApiRoutes.User.Update)]
+    [ValidateModel]
+    public async Task<ActionResult> UpdateSellerUser([FromBody] UpdateSellerUserRequest userRequest)
+    {
+        if (userRequest.File != null)
+        {
+            var filePrefix = Guid.NewGuid() + "_";
+
+            if (!await UploadFile(userRequest.File, filePrefix))
+            {
+                return Response();
+            }
+
+            userRequest.BusinessLicense = filePrefix + userRequest.File.FileName;
+        }
+
+        await _userAppService.UpdateSeller(userRequest);
+
+        return Response();
+    }
+
+    [Authorize]
+    [HttpPut(ApiRoutes.User.AddBusinessLicense)]
+    public async Task<ActionResult> AddBusinessLicense()
+    {
+        var businessLicenseFile = HttpContext.Request.Form.Files.FirstOrDefault(); var userId = HttpContext.GetIdentityUserId();
+
+        var imagePrefix = Guid.NewGuid() + "_";
+
+        if (!await UploadFile(businessLicenseFile, imagePrefix))
+        {
+            return Response();
+        }
+
+        var licenseUrl = imagePrefix + businessLicenseFile.FileName;
+
+        await _userAppService.AddBusinessLicense(userId, licenseUrl);
+
+        return Response();
+    }
+
+    private async Task<bool> UploadFile(IFormFile file, string imgPrefix)
+    {
+        if (file == null || file.Length == 0)
+        {
+            Notify("Forneça um documento válido!");
+            return false;
+        }
+
+        const long maxFileSize = 600 * 1024;
+        if (file.Length > maxFileSize)
+        {
+            Notify("O tamanho do documento não pode exceder 600 KB!");
+            return false;
+        }
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Licenses", imgPrefix + file.FileName);
+
+        if (System.IO.File.Exists(path))
+        {
+            Notify("Já existe um documento com este nome!");
+            return false;
+        }
+
+        using (var stream = new FileStream(path, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+
+        return true;
+    }
+
+    private bool DeleteFile(string fileName)
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Licenses", fileName);
+
+        if (System.IO.File.Exists(path))
+        {
+            System.IO.File.Delete(path);
+
+            return true;
+        }
+
+        return false;
     }
 }

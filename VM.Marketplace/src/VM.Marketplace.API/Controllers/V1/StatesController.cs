@@ -14,6 +14,7 @@ public class StatesController : BaseController
         _stateAppService = stateAppService;
     }
 
+    [AllowAnonymous]
     [HttpGet(ApiRoutes.State.GetAll)]
     public async Task<ActionResult> GetAll()
     {

@@ -18,4 +18,10 @@
     <ProjectReference Include="..\VM.Marketplace.Infrastructure\VM.Marketplace.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Categories\" />
+    <Folder Include="wwwroot\Licenses\" />
+    <Folder Include="wwwroot\Products\" />
+  </ItemGroup>
+
 </Project>

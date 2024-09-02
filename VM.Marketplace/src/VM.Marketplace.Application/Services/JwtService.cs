@@ -22,7 +22,13 @@ public class JwtService : IJwtService
 
     public async Task<AuthenticationResultDto> GenerateToken(UserDto user)
     {
-        var role = await _roleRepository.GetRoleByName(user.Role);
+        List<ClaimDto> claims = new List<ClaimDto>();
+
+        if(user.Role != null)
+        {
+            var role = await _roleRepository.GetRoleByName(user.Role);
+            claims = role.Claims.ToList();
+        }
 
         var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -33,7 +39,7 @@ public class JwtService : IJwtService
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = GereateClaims(user, role.Claims),
+            Subject = GereateClaims(user, claims),
             Expires = DateTime.Now.AddMinutes(_jwtSettings.TokenValidityInMinutes),
             Issuer = _jwtSettings.Issuer,
             Audience = _jwtSettings.Audience,
@@ -51,21 +57,25 @@ public class JwtService : IJwtService
             user.Role,
             user.PhoneNumber,
             token,
-            role.Claims
+            claims
             );
     }
 
-    private ClaimsIdentity GereateClaims(UserDto user, IEnumerable<ClaimDto> claims)
+    private ClaimsIdentity GereateClaims(UserDto user, List<ClaimDto> claims)
     {
         var claimsIdentity = new ClaimsIdentity();
         claimsIdentity.AddClaim(new Claim("IdentityUserId", user.Id.ToString()));
         claimsIdentity.AddClaim(new Claim("Email", user.Email));
         claimsIdentity.AddClaim(new Claim("FullName", user.FullName));
-        claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, user.Role));
 
-        foreach (var claim in claims)
+        if (claims.Any())
         {
-            claimsIdentity.AddClaim(new Claim(claim.Type, claim.Value));
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, user.Role));
+
+            foreach (var claim in claims)
+            {
+                claimsIdentity.AddClaim(new Claim(claim.Type, claim.Value));
+            }
         }
 
         return claimsIdentity;

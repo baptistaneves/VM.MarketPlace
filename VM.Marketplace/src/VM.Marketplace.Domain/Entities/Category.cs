@@ -3,21 +3,20 @@
 public class Category : Entity
 {
     public string Description { get; private set; }
-    public Guid GroupId { get; private set; }
-    public Group Group { get; private set; }
+    public string ImageUrl { get; private set; }
 
-    public Category(string description, Guid groupId)
+    public Category(string description, string imageUrl)
     {
         Description = description;
-        GroupId = groupId;
+        ImageUrl = imageUrl;
     }
 
     //For MongoDb Rel.
     public Category() { }
 
-    public void Update(string description, Guid groupId)
+    public void Update(string description, string imageUrl)
     {
         Description = description;
-        GroupId = groupId;  
+        ImageUrl = imageUrl;  
     }
 }

@@ -20,4 +20,14 @@ public class LoginController : BaseController
         return Response(response);
 
     }
+
+    [HttpPost(ApiRoutes.User.CustomerOrSellerLogin)]
+    [ValidateModel]
+    public async Task<ActionResult> CustomerOrSellerLogin([FromBody] LoginRequest login)
+    {
+        var response = await _userAppService.CustomerOrSellerLogin(login);
+
+        return Response(response);
+
+    }
 }

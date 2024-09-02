@@ -1,6 +1,4 @@
-﻿using VM.Marketplace.Domain.Dtos;
-
-namespace VM.Marketplace.Application.Services;
+﻿namespace VM.Marketplace.Application.Services;
 
 public class CategoryAppService : BaseAppService, ICategoryAppService
 {
@@ -20,31 +18,35 @@ public class CategoryAppService : BaseAppService, ICategoryAppService
             return;
         }
 
-        await _categoryRepository.InsertOnceAsync(new Category(categoryRequest.Description, categoryRequest.GroupId));
+        await _categoryRepository.InsertOnceAsync(new Category(categoryRequest.Description, categoryRequest.ImageUrl));
     }
 
-    public async Task UpdateCategoryAsync(UpdateCategoryRequest categoryRequest)
+    public async Task<string> UpdateCategoryAsync(UpdateCategoryRequest categoryRequest)
     {
         var category = await _categoryRepository.GetByIdAsync(categoryRequest.Id);
+
+        var oldImageUrl = category.ImageUrl;
 
         if (category is null)
         {
             Notify(CategoryErrorMessage.CategoryNotFound);
-            return;
+            return string.Empty;
         }
 
-        if (!Validate(new UpdateCategoryValidation(), categoryRequest)) return;
+        if (!Validate(new UpdateCategoryValidation(), categoryRequest)) return string.Empty;
 
         if (_categoryRepository
             .FilterAsync(x => x.Description == categoryRequest.Description && x.Id != categoryRequest.Id).Result.Any())
         {
             Notify(CategoryErrorMessage.CategoryAlreadyExists);
-            return;
+            return string.Empty;
         }
 
-        category.Update(categoryRequest.Description, categoryRequest.GroupId);
+        category.Update(categoryRequest.Description, categoryRequest.ImageUrl);
 
         await _categoryRepository.ReplaceOnceAsync(category);
+
+        return oldImageUrl;
     }
 
     public async Task RemoveCategoryAsync(Guid id)
@@ -58,9 +60,9 @@ public class CategoryAppService : BaseAppService, ICategoryAppService
         await _categoryRepository.DeleteOnceAsync(id);
     }
 
-    public async Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync()
+    public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
     {
-        return await _categoryRepository.GetAllCategories();
+        return await _categoryRepository.GetAllAsync();
     }
 
     public async Task<Category> GetCategoryByIdAsync(Guid id)

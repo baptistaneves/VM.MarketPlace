@@ -8,8 +8,8 @@ public class CreateCategoryValidation : AbstractValidator<CreateCategoryRequest>
            .NotEmpty().WithMessage(CategoryErrorMessage.DescriptionIsRequired)
            .MinimumLength(3).WithMessage(CategoryErrorMessage.DescriptionMinLength);
 
-        RuleFor(x => x.GroupId)
-           .NotEqual(Guid.Empty).WithMessage(CategoryErrorMessage.GroupIsRequired);
+        RuleFor(x => x.ImageUrl)
+           .NotEmpty().WithMessage(CategoryErrorMessage.ImageUrlIsRequired);
     }
 }
 
@@ -23,8 +23,5 @@ public class UpdateCategoryValidation : AbstractValidator<UpdateCategoryRequest>
         RuleFor(x => x.Description)
            .NotEmpty().WithMessage(CategoryErrorMessage.DescriptionIsRequired)
            .MinimumLength(3).WithMessage(CategoryErrorMessage.DescriptionMinLength);
-
-        RuleFor(x => x.GroupId)
-           .NotEqual(Guid.Empty).WithMessage(CategoryErrorMessage.GroupIsRequired);
     }
 }

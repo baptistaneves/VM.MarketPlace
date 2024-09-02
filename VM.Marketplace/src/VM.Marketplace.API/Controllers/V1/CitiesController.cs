@@ -14,6 +14,7 @@ public class CitiesController : BaseController
         _cityAppService = cityAppService;
     }
 
+    [AllowAnonymous]
     [HttpGet(ApiRoutes.City.GetAll)]
     public async Task<ActionResult> GetAll()
     {

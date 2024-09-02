@@ -1249,6 +1249,7 @@
         "dependencies": {
           "FluentValidation": "11.9.0",
           "MediatR": "12.2.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
           "Microsoft.Extensions.Options": "8.0.2",
           "System.IdentityModel.Tokens.Jwt": "7.5.1",
           "VM.Marketplace.Domain": "1.0.0"

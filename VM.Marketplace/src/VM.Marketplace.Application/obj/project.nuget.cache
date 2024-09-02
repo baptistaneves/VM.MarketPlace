@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "S4FX1LHk9ND8OTNo08bh/A9EAF8SbnBwVEq5lLPEdcOjbBDhEwjYq4bh50ecUKTyUTtP6xOw98l6nPunE9hadQ==",
+  "dgSpecHash": "TpTbqTbURTYdFXwh15mFx1QzWO8yhYmDhnTbpHYXJaOunbciNss0TwcFxVEYXKq00zXTkx2s6i1X1X46LUzsbg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Baptista Neves\\Desktop\\Arquivos\\Projectos\\Visão Moderna\\VM.MarketPlace\\VM.Marketplace\\src\\VM.Marketplace.Application\\VM.Marketplace.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
     "C:\\Users\\Baptista Neves\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",

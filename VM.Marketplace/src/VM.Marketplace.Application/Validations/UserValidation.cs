@@ -65,8 +65,8 @@ internal class CreateSellerUserValidation : AbstractValidator<CreateSellerUserRe
             .NotEmpty().WithMessage(UserErrorMessage.EmailIsRequired)
             .EmailAddress().WithMessage(UserErrorMessage.EmailNotValid);
 
-        RuleFor(x => x.VatNumber)
-            .NotEmpty().WithMessage(UserErrorMessage.EmailNotValid);
+        RuleFor(x => x.PhoneNumber)
+            .NotEmpty().WithMessage(UserErrorMessage.PhoneNumberIsRequired);
 
         RuleFor(x => x.Password)
             .NotEmpty().WithMessage(UserErrorMessage.PasswordIsRequired)
@@ -74,87 +74,34 @@ internal class CreateSellerUserValidation : AbstractValidator<CreateSellerUserRe
     }
 }
 
-internal class CreateSellerUserFromDashboardValidation : AbstractValidator<CreateSellerUserFromDashboardRequest>
+internal class UpdateSellerUserValidation : AbstractValidator<UpdateSellerUserRequest>
 {
-    public CreateSellerUserFromDashboardValidation()
-    {
-        RuleFor(x => x.FullName)
-            .NotEmpty().WithMessage(UserErrorMessage.FullNameIsRequired)
-            .MinimumLength(3).WithMessage(UserErrorMessage.FullNameMinLength);
-
-        RuleFor(x => x.DeliveryAddress)
-            .NotEmpty().WithMessage(UserErrorMessage.DeliveryAddressIsRequired);
-
-        RuleFor(x => x.Address)
-            .NotEmpty().WithMessage(UserErrorMessage.FullNameIsRequired);
-
-        RuleFor(x => x.Bank)
-            .NotEmpty().WithMessage(UserErrorMessage.BankIsRequired);
-
-        RuleFor(x => x.AccountHolder)
-            .NotEmpty().WithMessage(UserErrorMessage.AccountHolderIsRequired);
-
-        RuleFor(x => x.AccountNumber)
-           .NotEmpty().WithMessage(UserErrorMessage.AccountNumberIsRequired);
-
-        RuleFor(x => x.Iban)
-           .NotEmpty().WithMessage(UserErrorMessage.IbanIsRequired);
-
-        RuleFor(x => x.Email)
-            .NotEmpty().WithMessage(UserErrorMessage.EmailIsRequired)
-            .EmailAddress().WithMessage(UserErrorMessage.EmailNotValid);
-
-        RuleFor(x => x.VatNumber)
-            .NotEmpty().WithMessage(UserErrorMessage.EmailNotValid);
-
-        RuleFor(x => x.Password)
-            .NotEmpty().WithMessage(UserErrorMessage.PasswordIsRequired)
-            .MinimumLength(6).WithMessage(UserErrorMessage.PasswordMinLength);
-    }
-}
-
-internal class UpdateSellerUserFromDashboardValidation : AbstractValidator<CreateSellerUserFromDashboardRequest>
-{
-    public UpdateSellerUserFromDashboardValidation()
+    public UpdateSellerUserValidation()
     {
         RuleFor(x => x.Id)
-          .NotEqual(Guid.Empty).WithMessage(UserErrorMessage.IdNotValid);
+           .NotEqual(Guid.Empty).WithMessage(UserErrorMessage.IdNotValid);
 
         RuleFor(x => x.FullName)
             .NotEmpty().WithMessage(UserErrorMessage.FullNameIsRequired)
             .MinimumLength(3).WithMessage(UserErrorMessage.FullNameMinLength);
 
-        RuleFor(x => x.DeliveryAddress)
-            .NotEmpty().WithMessage(UserErrorMessage.DeliveryAddressIsRequired);
-
-        RuleFor(x => x.Address)
-            .NotEmpty().WithMessage(UserErrorMessage.FullNameIsRequired);
-
-        RuleFor(x => x.Bank)
-            .NotEmpty().WithMessage(UserErrorMessage.BankIsRequired);
-
-        RuleFor(x => x.AccountHolder)
-            .NotEmpty().WithMessage(UserErrorMessage.AccountHolderIsRequired);
-
-        RuleFor(x => x.AccountNumber)
-           .NotEmpty().WithMessage(UserErrorMessage.AccountNumberIsRequired);
-
-        RuleFor(x => x.Iban)
-           .NotEmpty().WithMessage(UserErrorMessage.IbanIsRequired);
-
         RuleFor(x => x.Email)
             .NotEmpty().WithMessage(UserErrorMessage.EmailIsRequired)
             .EmailAddress().WithMessage(UserErrorMessage.EmailNotValid);
 
-        RuleFor(x => x.VatNumber)
-            .NotEmpty().WithMessage(UserErrorMessage.EmailNotValid);
+        RuleFor(x => x.PhoneNumber)
+            .NotEmpty().WithMessage(UserErrorMessage.PhoneNumberIsRequired);
 
-        RuleFor(x => x.Password)
-            .NotEmpty().WithMessage(UserErrorMessage.PasswordIsRequired)
-            .MinimumLength(6).WithMessage(UserErrorMessage.PasswordMinLength);
+        RuleFor(x => x.Address)
+            .NotEmpty().WithMessage(UserErrorMessage.AddressIsRequired);
+
+        RuleFor(x => x.City)
+            .NotEmpty().WithMessage(UserErrorMessage.CityIsRequired);
+
+        RuleFor(x => x.State)
+            .NotEmpty().WithMessage(UserErrorMessage.StateIsRequired);
     }
 }
-
 
 
 internal class LoginValidation : AbstractValidator<LoginRequest>

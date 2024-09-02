@@ -9,3 +9,6 @@ global using VM.Marketplace.Application.Interfaces;
 global using VM.Marketplace.Application.Requests;
 global using VM.Marketplace.Domain.Notifications.Interfaces;
 global using VM.Marketplace.Domain.Notifications;
+global using Microsoft.AspNetCore.Authorization;
+global using VM.Marketplace.API.Extensions;
+global using VM.Marketplace.Domain.Filters;

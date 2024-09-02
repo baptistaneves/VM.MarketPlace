@@ -19,6 +19,14 @@ public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> w
         await _collection.ReplaceOneAsync(x => x.Id == entity.Id, entity);
     }
 
+    public virtual async Task UpdateFieldAsync(Guid id, string fieldName, object newValue)
+    {
+        var filter = Builders<TEntity>.Filter.Eq("_id", id); 
+        var update = Builders<TEntity>.Update.Set(fieldName, newValue);
+
+        await _collection.UpdateOneAsync(filter, update);
+    }
+
     public virtual async Task DeleteOnceAsync(Guid id)
     {
         await _collection.DeleteOneAsync(x => x.Id == id);
