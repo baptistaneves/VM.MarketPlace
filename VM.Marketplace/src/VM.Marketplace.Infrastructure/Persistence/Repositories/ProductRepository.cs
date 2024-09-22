@@ -125,6 +125,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
                         UserFullName = user.FullName,
                         PhoneNumber = user.PhoneNumber,
                         Email = user.Email,
+                        Address = user.Address,
                         IsMedicine = product.IsMedicine,
                         ExpiryDate = product.ExpiryDate,
                         MainPhoto = product.MainPhoto
