@@ -27,8 +27,8 @@ public class UpdateSellerUserRequest
     [Required(ErrorMessage = UserErrorMessage.AddressIsRequired)]
     public string Address { get; set; }
 
-    public string TaxIdentificationNumber { get; set; }
-    public string BusinessLicense { get; set; }
+    public string? TaxIdentificationNumber { get; set; }
+    public string? BusinessLicense { get; set; }
     public TypeSeller TypeSeller { get; set; }
     public IFormFile? File { get; set; }
 }
