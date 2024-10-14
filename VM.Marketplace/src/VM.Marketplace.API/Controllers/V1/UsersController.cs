@@ -21,6 +21,13 @@ public class UsersController : BaseController
         return Response(await _userAppService.GetAllAdminUsersAsync());
     }
 
+    [HttpGet(ApiRoutes.User.GetAllSellerUsers)]
+    public async Task<ActionResult> GetAllSellerUsers()
+    {
+        return Response(await _userAppService.GetAllSellerUsersAsync());
+    }
+
+    [Authorize]
     [HttpGet(ApiRoutes.User.GetCurrentUserData)]
     public async Task<ActionResult> GetCurrentUserData()
     {
@@ -86,10 +93,30 @@ public class UsersController : BaseController
     }
 
     [Authorize]
+    [HttpPut(ApiRoutes.User.VerifyUser)]
+    public async Task<ActionResult> VerifyUser(Guid userId)
+    {
+        await _userAppService.VerifyUser(userId);
+
+        return Response();
+    }
+
+    [Authorize]
+    [HttpPut(ApiRoutes.User.UnverifyUser)]
+    public async Task<ActionResult> UnverifyUser(Guid userId)
+    {
+        await _userAppService.UnverifyUser(userId);
+
+        return Response();
+    }
+
+    [Authorize]
     [HttpPut(ApiRoutes.User.AddBusinessLicense)]
     public async Task<ActionResult> AddBusinessLicense()
     {
-        var businessLicenseFile = HttpContext.Request.Form.Files.FirstOrDefault(); var userId = HttpContext.GetIdentityUserId();
+        var businessLicenseFile = HttpContext.Request.Form.Files.FirstOrDefault();
+        
+        var userId = HttpContext.GetIdentityUserId();
 
         var imagePrefix = Guid.NewGuid() + "_";
 
@@ -101,6 +128,21 @@ public class UsersController : BaseController
         var licenseUrl = imagePrefix + businessLicenseFile.FileName;
 
         await _userAppService.AddBusinessLicense(userId, licenseUrl);
+
+        return Response();
+    }
+
+
+
+    [Authorize]
+    [HttpDelete(ApiRoutes.User.RemoveBusinessLicense)]
+    public async Task<ActionResult> RemoveBusinessLicense()
+    {
+        var userId = HttpContext.GetIdentityUserId();
+
+        var user = await _userAppService.RemoveBusinessLicense(userId);
+
+        DeleteFile(user.BusinessLicense);
 
         return Response();
     }

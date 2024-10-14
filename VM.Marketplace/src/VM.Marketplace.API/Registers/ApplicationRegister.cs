@@ -39,6 +39,13 @@ public class ApplicationRegister : IWebApplicationRegister
             RequestPath = "/Products"
         });
 
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            FileProvider = new PhysicalFileProvider(
+                Path.Combine(app.Environment.ContentRootPath, "wwwroot", "Licenses")),
+            RequestPath = "/Licenses"
+        });
+
         app.UseCors("AllowLocalhost4200");
 
         app.UseAuthentication();

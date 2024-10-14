@@ -185,7 +185,8 @@ public class UserRepository : GenericRepository<User>, IUserRepository
                           Role = user.Role,
                           IsDeleted = user.IsDeleted,
                           CreatedAt = user.CreatedAt,
-                          VatNumber = user.VatNumber
+                          VatNumber = user.VatNumber,
+                          BusinessLicenseUrl = user.BusinessLicenseUrl
                       }).Where(x => x.Type == TypeUser.Administrator).ToList();
 
         return result;
@@ -237,7 +238,9 @@ public class UserRepository : GenericRepository<User>, IUserRepository
                           Role = user.Role,
                           IsDeleted = user.IsDeleted,
                           CreatedAt = user.CreatedAt,
-                          VatNumber = user.VatNumber
+                          VatNumber = user.VatNumber,
+                          IsVerified = user.IsVerified,
+                          BusinessLicenseUrl = user.BusinessLicenseUrl
                       }).Where(x => x.Type == TypeUser.Seller).ToList();
 
         return result;
@@ -291,7 +294,8 @@ public class UserRepository : GenericRepository<User>, IUserRepository
                           CreatedAt = user.CreatedAt,
                           VatNumber = user.VatNumber,
                           City = user.City,
-                          State = user.State
+                          State = user.State,
+                          BusinessLicense = user.BusinessLicenseUrl
                       }).FirstOrDefault(x => x.Id == id);
 
         return result;

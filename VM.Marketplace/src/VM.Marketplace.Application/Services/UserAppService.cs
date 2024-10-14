@@ -161,4 +161,23 @@ public class UserAppService : BaseAppService, IUserAppService
 
         await _userRepository.UpdateFieldAsync(userId, "BusinessLicenseUrl", businessLicenseUrl);
     }
+
+    public async Task<UserDto> RemoveBusinessLicense(Guid userId)
+    {
+        var user = await _userRepository.GetUserByIdAsync(userId);
+
+        await _userRepository.UpdateFieldAsync(userId, "BusinessLicenseUrl", "");
+
+        return user;
+    }
+
+    public async Task VerifyUser(Guid userId)
+    {
+        await _userRepository.UpdateFieldAsync(userId, "IsVerified", true);
+    }
+
+    public async Task UnverifyUser(Guid userId)
+    {
+        await _userRepository.UpdateFieldAsync(userId, "IsVerified", false);
+    }
 }

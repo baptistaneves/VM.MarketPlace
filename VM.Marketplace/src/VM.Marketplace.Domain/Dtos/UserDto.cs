@@ -21,6 +21,7 @@ public class UserDto
     public string AccountHolder { get; set; }
     public string TaxIdentificationNumber { get; set; }
     public string BusinessLicense { get; set; }
+    public string BusinessLicenseUrl { get; set; }
     public string Iban { get; set; }
     public DateTime CreatedAt { get; set; }
     public bool IsDeleted { get; set; }

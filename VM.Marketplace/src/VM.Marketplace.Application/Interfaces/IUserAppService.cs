@@ -21,4 +21,8 @@ public interface IUserAppService
     Task<AuthenticationResultDto> CustomerOrSellerLogin(LoginRequest loginRequest);
 
     Task AddBusinessLicense(Guid userId, string  businessLicense);
+    Task<UserDto> RemoveBusinessLicense(Guid userId);
+
+    Task VerifyUser(Guid userId);
+    Task UnverifyUser(Guid userI);
 }

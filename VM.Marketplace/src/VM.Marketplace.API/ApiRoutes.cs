@@ -9,12 +9,16 @@ public class ApiRoutes
         public const string AddAdminUser = "adicionar-usuario-admin";
         public const string AddSellerUser = "criar-conta";
         public const string GetAllAdminUsers = "obter-usuarios-admin";
+        public const string GetAllSellerUsers = "obter-usuarios-vendedores";
         public const string GetCurrentUserData = "obter-dados-do-usuario-logado";
         public const string RemoveUserAdmin = "remover-usuario-admin/{id}";
         public const string UpdateUserAdmin = "actualizar-usuario-admin";
         public const string Update = "actualizar-dados-da-minha-conta";
         public const string CustomerOrSellerLogin = "fazer-login";
         public const string AddBusinessLicense = "enviar-alvara-comercial";
+        public const string RemoveBusinessLicense = "remover-alvara-comercial";
+        public const string VerifyUser = "verificar-usuario/{userId}";
+        public const string UnverifyUser = "remover-verificacao-do-usuario/{userId}";
     }
 
     public static class Role
