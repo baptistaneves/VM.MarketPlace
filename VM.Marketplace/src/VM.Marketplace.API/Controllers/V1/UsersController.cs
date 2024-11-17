@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using VM.Marketplace.API.Extensions;
-
-namespace VM.Marketplace.API.Controllers.V1;
+﻿namespace VM.Marketplace.API.Controllers.V1;
 
 [ApiVersion("1.0")]
 [Route(ApiRoutes.BaseRoute)]

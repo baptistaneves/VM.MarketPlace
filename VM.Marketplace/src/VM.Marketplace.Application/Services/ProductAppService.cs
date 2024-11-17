@@ -59,8 +59,8 @@ public class ProductAppService : BaseAppService, IProductAppService
         return await _productRepository.GetProductById(id);
     }
 
-    public async Task<IEnumerable<ProductDto>> GetProductsByUserIdAsync(Guid userId)
+    public async Task<PagedResult<ProductDto>> GetProductsByUserAsync(ProductFilter filter)
     {
-        return await _productRepository.GetProductsByUserId(userId);
+        return await _productRepository.GetProductsByUser(filter);
     }
 }

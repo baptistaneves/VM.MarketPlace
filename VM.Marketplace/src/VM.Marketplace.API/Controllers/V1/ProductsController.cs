@@ -19,10 +19,11 @@ public class ProductsController : BaseController
     }
 
     [HttpGet(ApiRoutes.Product.GetProdutsByUserId)]
-    [ValidateGuid("userId")]
-    public async Task<ActionResult> GetProdutsByUserId(Guid userId)
+    public async Task<ActionResult> GetProdutsByUser([FromQuery] ProductFilter filter)
     {
-        return Response(await _productAppService.GetProductsByUserIdAsync(userId));
+        filter.UserId = HttpContext.GetIdentityUserId();
+
+        return Response(await _productAppService.GetProductsByUserAsync(filter));
     }
 
     [AllowAnonymous]

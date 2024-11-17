@@ -5,6 +5,8 @@ public class ProductFilter : BaseFilter
     private string _searchTerm;
     private string _category;
 
+    public Guid UserId { get; set; }
+
     public string SearchTerm
     {
         get => _searchTerm ?? string.Empty;

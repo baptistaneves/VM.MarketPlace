@@ -8,6 +8,6 @@ public interface IProductAppService
     Task<string> UpdateProductAsync(CreateProductRequest productRequest);
     Task RemoveProductAsync(Guid id);
     Task<ProductDto> GetProductByIdAsync(Guid id);
-    Task<IEnumerable<ProductDto>> GetProductsByUserIdAsync(Guid userId);
+    Task<PagedResult<ProductDto>> GetProductsByUserAsync(ProductFilter filter);
     Task<PagedResult<ProductDto>> GetAllProductsAsync(ProductFilter filter);
 }

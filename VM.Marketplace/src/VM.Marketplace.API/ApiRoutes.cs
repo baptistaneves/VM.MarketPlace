@@ -73,7 +73,7 @@ public class ApiRoutes
         public const string Remove = "remover-produto/{id}";
         public const string GetAll = "obter-produtos";
         public const string GetById = "obter-produto-por-id/{id}";
-        public const string GetProdutsByUserId = "obter-produtos-por-usuario/{userId}";
+        public const string GetProdutsByUserId = "obter-produtos-por-usuario";
     }
 
     public static class Subcategory

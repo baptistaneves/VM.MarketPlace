@@ -51,6 +51,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
                 CategoryId = x.product.CategoryId,
                 UserId = x.product.UserId,
                 CategoryName = x.category.Description,
+                IsUserVerified = x.user.IsVerified,
                 UserFullName = x.user.FullName,
                 IsMedicine = x.product.IsMedicine,
                 ExpiryDate = x.product.ExpiryDate,
@@ -68,33 +69,63 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
     }
 
 
-    public async Task<IEnumerable<ProductDto>> GetProductsByUserId(Guid userId)
+    public async Task<PagedResult<ProductDto>> GetProductsByUser(ProductFilter filter)
     {
-        var result = (from product in _collection.AsQueryable()
-                      join category in _collection.Database.GetCollection<Category>("categories").AsQueryable() on product.CategoryId equals category.Id into productCategoryJoin
-                      join user in _collection.Database.GetCollection<User>("users").AsQueryable() on product.UserId equals user.Id into productUserJoin
-                      from user in productUserJoin.DefaultIfEmpty()
-                      from category in productCategoryJoin.DefaultIfEmpty()
-                      where product.UserId == userId
-                      select new ProductDto
-                      {
-                          Id = product.Id,
-                          Description = product.Description,
-                          Name = product.Name,
-                          TechnicalSpecifications = product.TechnicalSpecifications,
-                          PromotionalPrice = product.PromotionalPrice,
-                          IsActive = product.IsActive,
-                          IsDeleted = product.IsDeleted,
-                          CategoryId = product.CategoryId,
-                          UserId = product.UserId,
-                          CategoryName = category.Description,
-                          UserFullName = user.FullName,
-                          IsMedicine = product.IsMedicine,
-                          ExpiryDate = product.ExpiryDate,
-                          MainPhoto = product.MainPhoto
-                      }).ToList();
+        var query = from product in _collection.AsQueryable()
+                    join category in _collection.Database.GetCollection<Category>("categories").AsQueryable() on product.CategoryId equals category.Id into productCategoryJoin
+                    join user in _collection.Database.GetCollection<User>("users").AsQueryable() on product.UserId equals user.Id into productUserJoin
+                    from category in productCategoryJoin.DefaultIfEmpty()
+                    from user in productUserJoin.DefaultIfEmpty()
+                    select new { product, category, user };
 
-        return result;
+        if (!string.IsNullOrEmpty(filter.SearchTerm))
+        {
+            query = query.Where(x => x.product.Name.Contains(filter.SearchTerm) ||
+                                     x.product.Description.Contains(filter.SearchTerm) ||
+                                     x.category.Description.Contains(filter.SearchTerm) ||
+                                     x.user.FullName.Contains(filter.SearchTerm));
+        }
+
+        if (filter.UserId != Guid.Empty)
+        {
+            query = query.Where(x => x.user.Id == filter.UserId);
+        }
+
+        int totalItems = query.Count();
+
+        int skip = (filter.PageNumber - 1) * filter.PageSize;
+
+        var items = query
+            .Skip(skip)
+            .Take(filter.PageSize)
+            .Select(x => new ProductDto
+            {
+                Id = x.product.Id,
+                Description = x.product.Description,
+                Name = x.product.Name,
+                TechnicalSpecifications = x.product.TechnicalSpecifications,
+                Price = x.product.Price,
+                PromotionalPrice = x.product.PromotionalPrice,
+                IsActive = x.product.IsActive,
+                IsDeleted = x.product.IsDeleted,
+                CategoryId = x.product.CategoryId,
+                UserId = x.product.UserId,
+                CategoryName = x.category.Description,
+                UserFullName = x.user.FullName,
+                IsUserVerified = x.user.IsVerified,
+                IsMedicine = x.product.IsMedicine,
+                ExpiryDate = x.product.ExpiryDate,
+                MainPhoto = x.product.MainPhoto
+            })
+            .ToList();
+
+        return new PagedResult<ProductDto>
+        {
+            PageSize = filter.PageSize,
+            PageNumber = filter.PageNumber,
+            TotalItems = totalItems,
+            Items = items
+        };
     }
 
     public async Task<ProductDto> GetProductById(Guid id)
@@ -123,9 +154,10 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
                         UserId = product.UserId,
                         CategoryName = category.Description,
                         UserFullName = user.FullName,
+                        IsUserVerified = user.IsVerified,
                         PhoneNumber = user.PhoneNumber,
                         Email = user.Email,
-                        Address = user.Address,
+                        Address = user.State + "-" + user.City + ", " + user.Address,
                         IsMedicine = product.IsMedicine,
                         ExpiryDate = product.ExpiryDate,
                         MainPhoto = product.MainPhoto
@@ -134,7 +166,5 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         var result = await Task.Run(() => query.FirstOrDefault());
         return result;
     }
-
-
 
 }

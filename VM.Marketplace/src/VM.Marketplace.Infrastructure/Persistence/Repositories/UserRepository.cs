@@ -287,6 +287,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
                           AccountHolder = user.AccountHolder,
                           Iban = user.Iban,
                           IsBlocked = user.IsBlocked,
+                          IsVerified = user.IsVerified,
                           Address = user.Address,
                           Bank = user.Bank,
                           Role = user.Role,

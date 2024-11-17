@@ -5,6 +5,7 @@ public class ProductDto
     public Guid Id { get; set; }
     public Guid CategoryId { get; set; }
     public Guid UserId { get; set; }
+    public bool IsUserVerified { get; set; }
     public string CategoryName { get; set; }
     public string UserFullName { get; set; }
     public string PhoneNumber { get; set; }

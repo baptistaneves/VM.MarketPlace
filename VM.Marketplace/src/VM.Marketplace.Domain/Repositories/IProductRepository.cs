@@ -6,7 +6,7 @@ namespace VM.Marketplace.Domain.Repositories;
 
 public interface IProductRepository : IGenericRepository<Product>
 {
-    Task<IEnumerable<ProductDto>> GetProductsByUserId(Guid id);
+    Task<PagedResult<ProductDto>> GetProductsByUser(ProductFilter filter);
     Task<ProductDto> GetProductById(Guid id);
     Task<PagedResult<ProductDto>> GetAllProducts(ProductFilter filter);
 }
